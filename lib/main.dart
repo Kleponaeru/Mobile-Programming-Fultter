@@ -3,7 +3,10 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:progmob_2023_flutter/constants.dart';
 import 'package:progmob_2023_flutter/details_screen.dart';
+import 'package:progmob_2023_flutter/insight_screen.dart';
 import 'package:progmob_2023_flutter/model/category.dart';
+import 'package:progmob_2023_flutter/profile_screen.dart';
+import 'package:sidebarx/sidebarx.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +22,11 @@ class MyApp extends StatelessWidget {
       title: 'Course App',
       theme: ThemeData(),
       home: HomeScreen(),
+      routes: {
+        '/profilescreen': (context) => ProfileScreen(),
+        '/detailscreen': (context) => DetailsScreen(),
+        '/insightscreen': (context) => InsightScreen(),
+      },
     );
   }
 }
@@ -26,6 +34,72 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            // const DrawerHeader(
+            //   decoration: BoxDecoration(
+            //     color: Colors.lightGreen,
+            //   ),
+            //   child: Text(''),
+            // ),
+            UserAccountsDrawerHeader(
+
+              accountName: Text("Kelvin Lie"),
+              accountEmail: Text("kelvinlie08@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child:
+                  Icon(Icons.person, size: 40),
+                ),
+            ),
+            ListTile(
+              title: const Text('Insight'),
+              leading: Icon(Icons.insights),
+              subtitle: Text("See your insight of this month"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/insightscreen");
+                // Implement the navigation logic for Home here
+              },
+            ),
+            ListTile(
+              title: const Text('Chat'),
+              leading: Icon(Icons.chat_bubble_rounded),
+              subtitle: Text("Chat with other users"),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                // Implement the navigation logic for Home here
+              },
+            ),
+            ListTile(
+              title: const Text('Settings'),
+              leading: Icon(Icons.settings),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/profilescreen");
+              },
+            ),
+
+            Divider(
+              color: Colors.blueGrey,
+              thickness: 0.15,
+              indent: 10,
+              endIndent: 10,
+            ),
+            ListTile(
+              title: const Text('Log Out'),
+              leading: Icon(Icons.logout),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/profilescreen");
+              },
+            ),
+
+          ],
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.only(left: 20, top: 50, right: 20),
         child: Column(
@@ -34,11 +108,23 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SvgPicture.asset("assets/icons/menu.svg"),
-                Image.asset("assets/images/user.png"),
+                InkWell(
+                  onTap: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  child: SvgPicture.asset("assets/icons/menu.svg"),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, "/profilescreen");
+                  },
+                  child: Image.asset("assets/images/user.png"),
+                ),
               ],
             ),
-            SizedBox(height: 30),
+
+
+  SizedBox(height: 30),
             Text("Hey Alex,", style: kHeadingextStyle),
             Text("Find a course you want to learn", style: kSubheadingextStyle),
             Container(
@@ -85,12 +171,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailsScreen(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, "/detailscreen");
                     },
                     child: Container(
                       padding: EdgeInsets.all(20),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:progmob_2023_flutter/constants.dart';
+import 'package:progmob_2023_flutter/main.dart';
 
-
-class DetailsScreen extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,6 @@ class DetailsScreen extends StatelessWidget {
                         },
                         child: SvgPicture.asset("assets/icons/arrow-left.svg"),
                       ),
-                      SvgPicture.asset("assets/icons/more-vertical.svg"),
                     ],
                   ),
                   SizedBox(height: 30),
@@ -41,7 +40,11 @@ class DetailsScreen extends StatelessWidget {
                     child: Container(
                       color: kBestSellerColor,
                       padding: EdgeInsets.only(
-                          left: 10, top: 5, right: 20, bottom: 5),
+                        left: 10,
+                        top: 5,
+                        right: 20,
+                        bottom: 5,
+                      ),
                       child: Text(
                         "BestSeller".toUpperCase(),
                         style: TextStyle(
@@ -51,13 +54,13 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  Text("Design Thinking", style: kHeadingextStyle),
+                  Text("Kelvin Lie", style: kHeadingextStyle),
                   SizedBox(height: 16),
                   Row(
                     children: <Widget>[
                       SvgPicture.asset("assets/icons/person.svg"),
                       SizedBox(width: 5),
-                      Text("18K"),
+                      Text("18K Followers"),
                       SizedBox(width: 20),
                       SvgPicture.asset("assets/icons/star.svg"),
                       SizedBox(width: 5),
@@ -69,15 +72,8 @@ class DetailsScreen extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: "\$50 ",
-                          style: kHeadingextStyle.copyWith(fontSize: 32),
-                        ),
-                        TextSpan(
-                          text: "\$70",
-                          style: TextStyle(
-                            color: kTextColor.withOpacity(.5),
-                            decoration: TextDecoration.lineThrough,
-                          ),
+                          text: "UI/UX Designer",
+                          style: kHeadingextStyle.copyWith(fontSize: 20),
                         ),
                       ],
                     ),
@@ -100,29 +96,23 @@ class DetailsScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Course Content", style: kTitleTextStyle),
+                          Text("Skills", style: kTitleTextStyle),
                           SizedBox(height: 30),
-                          CourseContent(
-                            number: "01",
-                            duration: 5.35,
-                            title: "Welcome to the Course",
-                            isDone: true,
+                          SkillItem(
+                            title: "UI/UX Design",
+                            level: "Expert",
                           ),
-                          CourseContent(
-                            number: '02',
-                            duration: 19.04,
-                            title: "Design Thinking - Intro",
-                            isDone: true,
+                          SkillItem(
+                            title: "Prototyping",
+                            level: "Advanced",
                           ),
-                          CourseContent(
-                            number: '03',
-                            duration: 15.35,
-                            title: "Design Thinking Process",
+                          SkillItem(
+                            title: "User Research",
+                            level: "Intermediate",
                           ),
-                          CourseContent(
-                            number: '04',
-                            duration: 5.35,
-                            title: "Customer Perspective",
+                          SkillItem(
+                            title: "Wireframing",
+                            level: "Intermediate",
                           ),
                         ],
                       ),
@@ -169,7 +159,7 @@ class DetailsScreen extends StatelessWidget {
                                   color: kBlueColor,
                                 ),
                                 child: Text(
-                                  "Buy Now",
+                                  "Hire Me",
                                   style: kSubtitleTextSyule.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -192,18 +182,11 @@ class DetailsScreen extends StatelessWidget {
   }
 }
 
-class CourseContent extends StatelessWidget {
-  final String? number;
-  final double? duration;
-  final String? title;
-  final bool isDone;
-  const CourseContent({
-    Key? key,
-    this.number,
-    this.duration,
-    this.title,
-    this.isDone = false,
-  }) : super(key: key);
+class SkillItem extends StatelessWidget {
+  final String title;
+  final String level;
+
+  SkillItem({required this.title, required this.level});
 
   @override
   Widget build(BuildContext context) {
@@ -212,44 +195,20 @@ class CourseContent extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Text(
-            number!,
+            title,
             style: kHeadingextStyle.copyWith(
               color: kTextColor.withOpacity(.15),
-              fontSize: 32,
-            ),
-          ),
-          SizedBox(width: 8),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "$duration mins\n",
-                  style: TextStyle(
-                    color: kTextColor.withOpacity(.5),
-                    fontSize: 18,
-                  ),
-                ),
-                TextSpan(
-                  text: title,
-                  style: kSubtitleTextSyule.copyWith(
-                    fontWeight: FontWeight.w600,
-                    height: 1.5,
-                  ),
-                ),
-              ],
+              fontSize: 24,
             ),
           ),
           Spacer(),
-          Container(
-            margin: EdgeInsets.only(left: 20),
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: kGreenColor.withOpacity(isDone ? 1 : .5),
+          Text(
+            level,
+            style: kSubtitleTextSyule.copyWith(
+              fontWeight: FontWeight.w600,
+              height: 1.5,
             ),
-            child: Icon(Icons.play_arrow, color: Colors.white),
-          )
+          ),
         ],
       ),
     );
