@@ -31,9 +31,11 @@ class MyApp extends StatelessWidget {
   }
 }
 class HomeScreen extends StatelessWidget {
+  final GlobalKey <ScaffoldState>_scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -110,7 +112,10 @@ class HomeScreen extends StatelessWidget {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    Scaffold.of(context).openDrawer();
+                    // Scaffold.of(context).openDrawer();
+                    if(_scaffoldKey.currentState != null){
+                      _scaffoldKey.currentState!.openDrawer();
+                    }
                   },
                   child: SvgPicture.asset("assets/icons/menu.svg"),
                 ),
