@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:progmob_2023_flutter/constants.dart';
+import 'package:progmob_2023_flutter/delete_data.dart';
 import 'package:progmob_2023_flutter/details_screen.dart';
+import 'package:progmob_2023_flutter/fetch_data.dart';
 import 'package:progmob_2023_flutter/insight_screen.dart';
 import 'package:progmob_2023_flutter/model/category.dart';
 import 'package:progmob_2023_flutter/profile_screen.dart';
-import 'package:sidebarx/sidebarx.dart';
+import 'package:http/http.dart' as http;
+import 'package:progmob_2023_flutter/send_data.dart';
+import 'package:progmob_2023_flutter/update_data.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,6 +30,12 @@ class MyApp extends StatelessWidget {
         '/profilescreen': (context) => ProfileScreen(),
         '/detailscreen': (context) => DetailsScreen(),
         '/insightscreen': (context) => InsightScreen(),
+        '/fetchdata': (context) => FetchData(),
+        '/senddata': (context) => SendData(),
+        '/updatedata': (context) => UpdateData(),
+        '/deletedata': (context) => DeleteData(),
+
+
       },
     );
   }
@@ -81,6 +91,41 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/profilescreen");
+              },
+            ),
+
+            ListTile(
+              title: const Text('Fetch Data'),
+              leading: Icon(Icons.data_exploration),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/fetchdata");
+              },
+            ),
+            ListTile(
+              title: const Text('Send Data'),
+              leading: Icon(Icons.send),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/senddata");
+              },
+            ),
+
+            ListTile(
+              title: const Text('Update Data'),
+              leading: Icon(Icons.update),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/updatedata");
+              },
+            ),
+
+            ListTile(
+              title: const Text('Delete Data'),
+              leading: Icon(Icons.delete),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/deletedata");
               },
             ),
 
