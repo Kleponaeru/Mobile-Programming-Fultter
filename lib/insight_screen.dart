@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:progmob_2023_flutter/constants.dart';
 
 class InsightScreen extends StatelessWidget {
+  const InsightScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(left: 0, top: 30, right: 0),
+        margin: const EdgeInsets.only(left: 0, top: 30, right: 0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -15,7 +15,7 @@ class InsightScreen extends StatelessWidget {
               Card(
                 child: Column(
                   children: [
-                    UserAccountsDrawerHeader(
+                    const UserAccountsDrawerHeader(
                       accountName: Text("Kelvin Lie"),
                       accountEmail: Text("kelvinlie08@gmail.com"),
                       currentAccountPicture: CircleAvatar(
@@ -25,8 +25,8 @@ class InsightScreen extends StatelessWidget {
                     ),
                     ListTile(
                       title: const Text('Kelvin Lie'),
-                      leading: Icon(Icons.stacked_bar_chart),
-                      subtitle: Text("kelvinlie08@gmail.com"),
+                      leading: const Icon(Icons.stacked_bar_chart),
+                      subtitle: const Text("kelvinlie08@gmail.com"),
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.pushNamed(context, "/insightscreen");
@@ -40,7 +40,7 @@ class InsightScreen extends StatelessWidget {
               Card(
                 child: Column(
                   children: [
-                    UserAccountsDrawerHeader(
+                    const UserAccountsDrawerHeader(
                       accountName: Text("Kelvin Lie"),
                       accountEmail: Text("kelvinlie08@gmail.com"),
                       currentAccountPicture: CircleAvatar(
@@ -50,8 +50,8 @@ class InsightScreen extends StatelessWidget {
                     ),
                     ListTile(
                       title: const Text('Kelvin Lie'),
-                      leading: Icon(Icons.stacked_bar_chart),
-                      subtitle: Text("kelvinlie08@gmail.com"),
+                      leading: const Icon(Icons.stacked_bar_chart),
+                      subtitle: const Text("kelvinlie08@gmail.com"),
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.pushNamed(context, "/insightscreen");
@@ -65,7 +65,7 @@ class InsightScreen extends StatelessWidget {
               Card(
                 child: Column(
                   children: [
-                    UserAccountsDrawerHeader(
+                    const UserAccountsDrawerHeader(
                       accountName: Text("Kelvin Lie"),
                       accountEmail: Text("kelvinlie08@gmail.com"),
                       currentAccountPicture: CircleAvatar(
@@ -75,8 +75,8 @@ class InsightScreen extends StatelessWidget {
                     ),
                     ListTile(
                       title: const Text('Kelvin Lie'),
-                      leading: Icon(Icons.stacked_bar_chart),
-                      subtitle: Text("kelvinlie08@gmail.com"),
+                      leading: const Icon(Icons.stacked_bar_chart),
+                      subtitle: const Text("kelvinlie08@gmail.com"),
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.pushNamed(context, "/insightscreen");

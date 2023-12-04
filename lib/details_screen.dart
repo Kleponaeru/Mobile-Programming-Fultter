@@ -4,12 +4,14 @@ import 'package:progmob_2023_flutter/constants.dart';
 
 
 class DetailsScreen extends StatelessWidget {
+  const DetailsScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFFF5F4EF),
           image: DecorationImage(
             image: AssetImage("assets/images/ux_big.png"),
@@ -19,7 +21,7 @@ class DetailsScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 20, top: 50, right: 20),
+              padding: const EdgeInsets.only(left: 20, top: 50, right: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -35,36 +37,36 @@ class DetailsScreen extends StatelessWidget {
                       SvgPicture.asset("assets/icons/more-vertical.svg"),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   ClipPath(
                     clipper: BestSellerClipper(),
                     child: Container(
                       color: kBestSellerColor,
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           left: 10, top: 5, right: 20, bottom: 5),
                       child: Text(
                         "BestSeller".toUpperCase(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Text("Design Thinking", style: kHeadingextStyle),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
+                  const Text("Design Thinking", style: kHeadingextStyle),
+                  const SizedBox(height: 16),
                   Row(
                     children: <Widget>[
                       SvgPicture.asset("assets/icons/person.svg"),
-                      SizedBox(width: 5),
-                      Text("18K"),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 5),
+                      const Text("18K"),
+                      const SizedBox(width: 20),
                       SvgPicture.asset("assets/icons/star.svg"),
-                      SizedBox(width: 5),
-                      Text("4.8")
+                      const SizedBox(width: 5),
+                      const Text("4.8")
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   RichText(
                     text: TextSpan(
                       children: [
@@ -85,7 +87,7 @@ class DetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -95,8 +97,8 @@ class DetailsScreen extends StatelessWidget {
                 ),
                 child: Stack(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(30),
+                    const Padding(
+                      padding: EdgeInsets.all(30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -132,7 +134,7 @@ class DetailsScreen extends StatelessWidget {
                       left: 0,
                       bottom: 0,
                       child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         height: 100,
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -140,7 +142,7 @@ class DetailsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(40),
                           boxShadow: [
                             BoxShadow(
-                              offset: Offset(0, 4),
+                              offset: const Offset(0, 4),
                               blurRadius: 50,
                               color: kTextColor.withOpacity(.1),
                             ),
@@ -149,17 +151,17 @@ class DetailsScreen extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.all(14),
+                              padding: const EdgeInsets.all(14),
                               height: 56,
                               width: 80,
                               decoration: BoxDecoration(
-                                color: Color(0xFFFFEDEE),
+                                color: const Color(0xFFFFEDEE),
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: SvgPicture.asset(
                                   "assets/icons/shopping-bag.svg"),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Expanded(
                               child: Container(
                                 alignment: Alignment.center,
@@ -218,7 +220,7 @@ class CourseContent extends StatelessWidget {
               fontSize: 32,
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           RichText(
             text: TextSpan(
               children: [
@@ -239,16 +241,16 @@ class CourseContent extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
-            margin: EdgeInsets.only(left: 20),
+            margin: const EdgeInsets.only(left: 20),
             height: 40,
             width: 40,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: kGreenColor.withOpacity(isDone ? 1 : .5),
             ),
-            child: Icon(Icons.play_arrow, color: Colors.white),
+            child: const Icon(Icons.play_arrow, color: Colors.white),
           )
         ],
       ),

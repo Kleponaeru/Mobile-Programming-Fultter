@@ -11,7 +11,7 @@ class Album {
         title: json['title'] as String,
       );
     } else {
-      throw FormatException('Failed to load album.');
+      throw const FormatException('Failed to load album.');
     }
   }
 }

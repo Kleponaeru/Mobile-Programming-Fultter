@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:progmob_2023_flutter/constants.dart';
-import 'package:progmob_2023_flutter/delete_data.dart';
 import 'package:progmob_2023_flutter/details_screen.dart';
 import 'package:progmob_2023_flutter/fetch_data.dart';
 import 'package:progmob_2023_flutter/insight_screen.dart';
+import 'package:progmob_2023_flutter/map.dart';
 import 'package:progmob_2023_flutter/model/category.dart';
 import 'package:progmob_2023_flutter/profile_screen.dart';
-import 'package:http/http.dart' as http;
 import 'package:progmob_2023_flutter/send_data.dart';
 import 'package:progmob_2023_flutter/update_data.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
 
   // This widget is the root of your application.
   @override
@@ -33,8 +34,7 @@ class MyApp extends StatelessWidget {
         '/fetchdata': (context) => FetchData(),
         '/senddata': (context) => SendData(),
         '/updatedata': (context) => UpdateData(),
-        '/deletedata': (context) => DeleteData(),
-
+        '/map': (context) => MapScreen(),
 
       },
     );
@@ -42,6 +42,8 @@ class MyApp extends StatelessWidget {
 }
 class HomeScreen extends StatelessWidget {
   final GlobalKey <ScaffoldState>_scaffoldKey = GlobalKey<ScaffoldState>();
+
+  HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +58,7 @@ class HomeScreen extends StatelessWidget {
             //   ),
             //   child: Text(''),
             // ),
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
 
               accountName: Text("Kelvin Lie"),
               accountEmail: Text("kelvinlie08@gmail.com"),
@@ -68,8 +70,8 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Insight'),
-              leading: Icon(Icons.insights),
-              subtitle: Text("See your insight of this month"),
+              leading: const Icon(Icons.insights),
+              subtitle: const Text("See your insight of this month"),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, "/insightscreen");
@@ -78,8 +80,8 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Chat'),
-              leading: Icon(Icons.chat_bubble_rounded),
-              subtitle: Text("Chat with other users"),
+              leading: const Icon(Icons.chat_bubble_rounded),
+              subtitle: const Text("Chat with other users"),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 // Implement the navigation logic for Home here
@@ -87,7 +89,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Settings'),
-              leading: Icon(Icons.settings),
+              leading: const Icon(Icons.settings),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/profilescreen");
@@ -96,7 +98,7 @@ class HomeScreen extends StatelessWidget {
 
             ListTile(
               title: const Text('Fetch Data'),
-              leading: Icon(Icons.data_exploration),
+              leading: const Icon(Icons.data_exploration),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/fetchdata");
@@ -104,7 +106,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Send Data'),
-              leading: Icon(Icons.send),
+              leading: const Icon(Icons.send),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/senddata");
@@ -113,7 +115,7 @@ class HomeScreen extends StatelessWidget {
 
             ListTile(
               title: const Text('Update Data'),
-              leading: Icon(Icons.update),
+              leading: const Icon(Icons.update),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/updatedata");
@@ -122,14 +124,22 @@ class HomeScreen extends StatelessWidget {
 
             ListTile(
               title: const Text('Delete Data'),
-              leading: Icon(Icons.delete),
+              leading: const Icon(Icons.delete),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/deletedata");
               },
             ),
 
-            Divider(
+            ListTile(
+              title: const Text('Map'),
+              leading: const Icon(Icons.map_rounded),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.pushNamed(context, "/map");
+              },
+            ),
+            const Divider(
               color: Colors.blueGrey,
               thickness: 0.15,
               indent: 10,
@@ -137,7 +147,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Log Out'),
-              leading: Icon(Icons.logout),
+              leading: const Icon(Icons.logout),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 Navigator.pushNamed(context, "/profilescreen");
@@ -148,7 +158,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 20, top: 50, right: 20),
+        padding: const EdgeInsets.only(left: 20, top: 50, right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -174,23 +184,23 @@ class HomeScreen extends StatelessWidget {
             ),
 
 
-  SizedBox(height: 30),
-            Text("Hey Alex,", style: kHeadingextStyle),
-            Text("Find a course you want to learn", style: kSubheadingextStyle),
+  const SizedBox(height: 30),
+            const Text("Hey Alex,", style: kHeadingextStyle),
+            const Text("Find a course you want to learn", style: kSubheadingextStyle),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 30),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              margin: const EdgeInsets.symmetric(vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               height: 60,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xFFF5F5F7),
+                color: const Color(0xFFF5F5F7),
                 borderRadius: BorderRadius.circular(40),
               ),
               child: Row(
                 children: <Widget>[
                   SvgPicture.asset("assets/icons/search.svg"),
-                  SizedBox(width: 16),
-                  Text(
+                  const SizedBox(width: 16),
+                  const Text(
                     "Search for anything",
                     style: TextStyle(
                       fontSize: 18,
@@ -203,17 +213,17 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Category", style: kTitleTextStyle),
+                const Text("Category", style: kTitleTextStyle),
                 Text(
                   "See All",
                   style: kSubtitleTextSyule.copyWith(color: kBlueColor),
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Expanded(
               child: StaggeredGridView.countBuilder(
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 crossAxisCount: 2,
                 itemCount: categories.length,
                 crossAxisSpacing: 20,
@@ -224,7 +234,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.pushNamed(context, "/detailscreen");
                     },
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       height: index.isEven ? 200 : 240,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
@@ -251,7 +261,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-                staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+                staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
               ),
             ),
           ],

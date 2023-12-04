@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:progmob_2023_flutter/constants.dart';
-import 'package:progmob_2023_flutter/main.dart';
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFFF5F4EF),
           image: DecorationImage(
             image: AssetImage("assets/images/ux_big.png"),
@@ -19,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 20, top: 50, right: 20),
+              padding: const EdgeInsets.only(left: 20, top: 50, right: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -34,12 +35,12 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   ClipPath(
                     clipper: BestSellerClipper(),
                     child: Container(
                       color: kBestSellerColor,
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 10,
                         top: 5,
                         right: 20,
@@ -47,27 +48,27 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       child: Text(
                         "BestSeller".toUpperCase(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Text("Kelvin Lie", style: kHeadingextStyle),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
+                  const Text("Kelvin Lie", style: kHeadingextStyle),
+                  const SizedBox(height: 16),
                   Row(
                     children: <Widget>[
                       SvgPicture.asset("assets/icons/person.svg"),
-                      SizedBox(width: 5),
-                      Text("18K Followers"),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 5),
+                      const Text("18K Followers"),
+                      const SizedBox(width: 20),
                       SvgPicture.asset("assets/icons/star.svg"),
-                      SizedBox(width: 5),
-                      Text("4.8")
+                      const SizedBox(width: 5),
+                      const Text("4.8")
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   RichText(
                     text: TextSpan(
                       children: [
@@ -81,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -91,8 +92,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 child: Stack(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(30),
+                    const Padding(
+                      padding: EdgeInsets.all(30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -122,7 +123,7 @@ class ProfileScreen extends StatelessWidget {
                       left: 0,
                       bottom: 0,
                       child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         height: 100,
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -130,7 +131,7 @@ class ProfileScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(40),
                           boxShadow: [
                             BoxShadow(
-                              offset: Offset(0, 4),
+                              offset: const Offset(0, 4),
                               blurRadius: 50,
                               color: kTextColor.withOpacity(.1),
                             ),
@@ -139,17 +140,17 @@ class ProfileScreen extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.all(14),
+                              padding: const EdgeInsets.all(14),
                               height: 56,
                               width: 80,
                               decoration: BoxDecoration(
-                                color: Color(0xFFFFEDEE),
+                                color: const Color(0xFFFFEDEE),
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: SvgPicture.asset(
                                   "assets/icons/shopping-bag.svg"),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Expanded(
                               child: Container(
                                 alignment: Alignment.center,
@@ -186,7 +187,7 @@ class SkillItem extends StatelessWidget {
   final String title;
   final String level;
 
-  SkillItem({required this.title, required this.level});
+  const SkillItem({Key? key, required this.title, required this.level}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +202,7 @@ class SkillItem extends StatelessWidget {
               fontSize: 24,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             level,
             style: kSubtitleTextSyule.copyWith(
